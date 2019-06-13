@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--CircleImageView-->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <!-- {@deprecated Use civ_circlebackground_color instead.} -->
+        <attr name="civ_fill_color" format="color" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <!--ShapImageView-->
+    <declare-styleable name="ShapImageView">
+        <attr name="shape_type" format="enum">
+            <enum name="oval" value="0" />
+            <enum name="rect" value="1" />
+        </attr>
+        <attr name="shape_radius" format="dimension" />
+        <attr name="shape_stroke_color" format="color" />
+        <attr name="shape_stroke_width" format="dimension" />
+        <attr name="shape_stroke_overlay" format="boolean" />
+        <attr name="shape_background_color" format="color" />
+    </declare-styleable>
+
+    <!--EmptyStatusView-->
+    <declare-styleable name="EmptyStatusView">
+        <attr name="empty_status_icon" format="reference" />
+        <attr name="empty_status_icon_size" format="dimension" />
+        <attr name="empty_status_message" format="string" />
+        <attr name="empty_status_message_size" format="dimension" />
+        <attr name="empty_status_message_color" format="color" />
+        <attr name="empty_status_description" format="string" />
+        <attr name="empty_status_description_size" format="dimension" />
+        <attr name="empty_status_description_color" format="color" />
+    </declare-styleable>
+</resources>
