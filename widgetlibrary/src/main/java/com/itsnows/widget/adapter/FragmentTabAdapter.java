@@ -17,53 +17,56 @@ import java.util.Stack;
  * FragmentTabAdapter
  */
 public class FragmentTabAdapter extends FragmentPagerAdapter {
-    private FragmentManager fragmentManager;
-    private Stack<TabItem> tabItems;
+    private FragmentManager mFragmentManager;
+    private Stack<TabItem> mTabItems;
 
-    public FragmentTabAdapter(FragmentManager fragmentManager) {
-        super(fragmentManager);
-        this.fragmentManager = fragmentManager;
-        this.tabItems = new Stack<>();
+    public FragmentTabAdapter(FragmentManager mFragmentManager) {
+        super(mFragmentManager);
+        this.mFragmentManager = mFragmentManager;
+        this.mTabItems = new Stack<>();
     }
 
     @Override
     public Fragment getItem(int i) {
-        return tabItems.get(i).getFragment();
+        return mTabItems.get(i).getFragment();
     }
 
     @Override
     public int getCount() {
-        return tabItems.size();
+        return mTabItems.size();
     }
 
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabItems.get(position).getTitle();
+        return mTabItems.get(position).getTitle();
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         Fragment fragment = (Fragment) super.instantiateItem(container, position);
-        fragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss();
+        mFragmentManager.beginTransaction().show(fragment).commitAllowingStateLoss();
         return fragment;
     }
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         Fragment fragment = (Fragment) super.instantiateItem(container, position);
-        fragmentManager.beginTransaction().hide(fragment).commitAllowingStateLoss();
+        mFragmentManager.beginTransaction().hide(fragment).commitAllowingStateLoss();
     }
 
-    public void addItem(CharSequence title, Fragment fragment) {
-        if (title == null) {
-            throw new IllegalArgumentException("The title cannot be null object");
-        }
+    /**
+     * Add fragment tab item.
+     *
+     * @param label
+     * @param fragment
+     */
+    public void addItem(CharSequence label, Fragment fragment) {
         if (fragment == null) {
             throw new IllegalArgumentException("The fragment cannot be null object");
         }
-        this.tabItems.add(new TabItem(title, fragment));
+        this.mTabItems.add(new TabItem(label, fragment));
         super.notifyDataSetChanged();
     }
 
@@ -76,11 +79,11 @@ public class FragmentTabAdapter extends FragmentPagerAdapter {
             this.fragment = fragment;
         }
 
-        public CharSequence getTitle() {
+        private CharSequence getTitle() {
             return title;
         }
 
-        public Fragment getFragment() {
+        private Fragment getFragment() {
             return fragment;
         }
     }
