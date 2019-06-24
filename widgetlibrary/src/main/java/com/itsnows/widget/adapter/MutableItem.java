@@ -39,9 +39,14 @@ public class MutableItem implements Comparator<MutableItem> {
         this.mType = type;
     }
 
+    public Object getContent() {
+        return mContent;
+    }
+
     public <T> T getContent(Class<T> type) {
         Class<?> contentClass = mContent.getClass();
-        if (contentClass.equals(type) || contentClass.isAssignableFrom(type)) {
+        if (contentClass.equals(type) ||
+                contentClass.isAssignableFrom(type)) {
             return (T) mContent;
         }
         return null;

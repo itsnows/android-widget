@@ -125,7 +125,11 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
      * @param position
      */
     public void setSelection(int position) {
-        this.mSelection = position;
+        if (mSelection != position) {
+            super.notifyItemChanged(mSelection);
+            this.mSelection = position;
+            super.notifyItemChanged(mSelection);
+        }
     }
 
     /**
