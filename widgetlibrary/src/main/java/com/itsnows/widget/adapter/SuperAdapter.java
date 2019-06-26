@@ -33,7 +33,7 @@ import java.util.List;
 public abstract class SuperAdapter<T> extends BaseAdapter {
     private Context mContext;
     private List<T> mItems;
-    private View[] mItemViews;
+    private int[] mItemViews;
     private int mSelection;
     private LayoutInflater mInflater;
     private OnItemClickListener onItemClickListener;
@@ -72,7 +72,7 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return onCreateItemView(mInflater, null).length;
+        return onCreateItemView().length;
     }
 
     @Override
@@ -80,9 +80,9 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             if (mItemViews == null) {
-                mItemViews = onCreateItemView(mInflater, parent);
+                mItemViews = onCreateItemView();
             }
-            convertView = mItemViews[getItemViewType(position)];
+            convertView = mInflater.inflate(mItemViews[getItemViewType(position)], parent, false);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
@@ -189,7 +189,7 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
      *
      * @return
      */
-    public abstract View[] onCreateItemView(LayoutInflater inflater, ViewGroup parent);
+    public abstract int[] onCreateItemView();
 
     /**
      * 绑定清单视图
@@ -254,6 +254,8 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
             View view = items.get(viewId);
             if (view == null) {
                 view = this.view.findViewById(viewId);
+                items.put(viewId, view);
+            } else {
                 items.put(viewId, view);
             }
             return view;

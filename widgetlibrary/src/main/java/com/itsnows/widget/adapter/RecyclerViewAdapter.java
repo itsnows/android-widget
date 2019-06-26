@@ -18,7 +18,7 @@ import java.util.List;
 public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
     private Context mContext;
     private List<T> mItems;
-    private View[] mItemViews;
+    private int[] mItemViews;
     private int mSelection;
     private LayoutInflater mInflater;
     private OnItemClickListener mOnItemClickListener;
@@ -34,9 +34,9 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (mItemViews == null) {
-            mItemViews = onCreateItemView(mInflater, parent);
+            mItemViews = onCreateItemView();
         }
-        View itemView = mItemViews[viewType];
+        View itemView = mInflater.inflate(mItemViews[viewType], parent, false);
         final RecyclerViewHolder viewHolder = new RecyclerViewHolder(mContext, itemView);
 
         if (mOnItemClickListener != null) {
@@ -106,7 +106,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
      * @return
      */
     public int getViewTypeCount() {
-        return onCreateItemView(mInflater, null).length;
+        return onCreateItemView().length;
     }
 
     /**
@@ -184,7 +184,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
      *
      * @return
      */
-    public abstract View[] onCreateItemView(LayoutInflater inflater, ViewGroup parent);
+    public abstract int[] onCreateItemView();
 
     /**
      * 绑定清单视图
