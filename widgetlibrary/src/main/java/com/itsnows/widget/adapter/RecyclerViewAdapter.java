@@ -106,7 +106,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
      * @return
      */
     public int getViewTypeCount() {
-        return mItemViews.length;
+        return onCreateItemView(mInflater, null).length;
     }
 
     /**

@@ -72,7 +72,7 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return mItemViews.length;
+        return onCreateItemView(mInflater, null).length;
     }
 
     @Override
