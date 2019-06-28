@@ -39,37 +39,26 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
         View itemView = mInflater.inflate(mItemViews[viewType], parent, false);
         final RecyclerViewHolder viewHolder = new RecyclerViewHolder(mContext, itemView);
 
-        if (mOnItemClickListener != null) {
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOnItemClickListener != null) {
                     mOnItemClickListener.onItemClick(RecyclerViewAdapter.this,
                             viewHolder.itemView, viewHolder.getLayoutPosition());
                 }
-            });
-        }
-
-        if (mOnItemLongClickListener != null) {
-            viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    mOnItemLongClickListener.onItemLongClick(RecyclerViewAdapter.this,
+            }
+        });
+        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (mOnItemLongClickListener != null) {
+                    return mOnItemLongClickListener.onItemLongClick(RecyclerViewAdapter.this,
                             viewHolder.itemView, viewHolder.getLayoutPosition());
-
-                    return false;
                 }
-            });
-        }
+                return false;
+            }
+        });
 
-        final ViewGroup viewGroup = parent;
-        if (mOnItemClickListener != null) {
-            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
         return viewHolder;
     }
 
@@ -210,7 +199,7 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
      */
     public interface OnItemLongClickListener {
 
-        void onItemLongClick(RecyclerView.Adapter adapter, View view, int position);
+        boolean onItemLongClick(RecyclerView.Adapter adapter, View view, int position);
 
     }
 
