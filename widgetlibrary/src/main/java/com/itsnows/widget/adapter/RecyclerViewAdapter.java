@@ -109,6 +109,15 @@ public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<Recycl
     }
 
     /**
+     * 获取选中位置
+     *
+     * @return
+     */
+    public int getSelection() {
+        return mSelection;
+    }
+
+    /**
      * 设置选中位置
      *
      * @param position
