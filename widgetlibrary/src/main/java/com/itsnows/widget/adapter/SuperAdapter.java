@@ -24,11 +24,10 @@ import android.widget.ToggleButton;
 import java.util.List;
 
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2016/3/11 15:09
- * <p>
- * GridView ListView Adapter.
+ * SuperAdapter
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2016/3/11 15:09
  */
 public abstract class SuperAdapter<T> extends BaseAdapter {
     private Context mContext;
@@ -176,24 +175,6 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
     }
 
     /**
-     * 单击事件监听接口
-     */
-    public interface OnItemClickListener {
-
-        void onItemClick(AdapterView<?> parent, View view, int position, long id);
-
-    }
-
-    /**
-     * 长按事件监听接口
-     */
-    public interface OnItemLongClickListener {
-
-        boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id);
-
-    }
-
-    /**
      * 创建清单视图
      *
      * @return
@@ -210,34 +191,20 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
     public abstract void onBindItemView(ViewHolder viewHolder, int viewType, int position, int selection, T item);
 
     /**
-     * 点击事件监听接口
+     * 单击事件监听接口
      */
-    public class OnClickEventListener implements OnClickListener, OnLongClickListener {
-        private int position;
-        private ViewGroup viewGroup;
+    public interface OnItemClickListener {
 
-        public OnClickEventListener(int position, ViewGroup viewGroup) {
-            super();
-            this.position = position;
-            this.viewGroup = viewGroup;
-        }
+        void onItemClick(AdapterView<?> parent, View view, int position, long id);
 
-        @Override
-        public void onClick(View v) {
-            if (onItemClickListener != null) {
-                onItemClickListener.onItemClick((AdapterView<Adapter>) viewGroup,
-                        v, position, getItemId(position));
-            }
-        }
+    }
 
-        @Override
-        public boolean onLongClick(View v) {
-            if (onItemLongClickListener != null) {
-                return onItemLongClickListener.onItemLongClick((AdapterView<Adapter>) viewGroup,
-                        v, position, getItemId(position));
-            }
-            return false;
-        }
+    /**
+     * 长按事件监听接口
+     */
+    public interface OnItemLongClickListener {
+
+        boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id);
 
     }
 
@@ -386,6 +353,38 @@ public abstract class SuperAdapter<T> extends BaseAdapter {
         public GridView getGridView(int viewId) {
             return (GridView) getView(viewId);
         }
+    }
+
+    /**
+     * 点击事件监听接口
+     */
+    public class OnClickEventListener implements OnClickListener, OnLongClickListener {
+        private int position;
+        private ViewGroup viewGroup;
+
+        public OnClickEventListener(int position, ViewGroup viewGroup) {
+            super();
+            this.position = position;
+            this.viewGroup = viewGroup;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (onItemClickListener != null) {
+                onItemClickListener.onItemClick((AdapterView<Adapter>) viewGroup,
+                        v, position, getItemId(position));
+            }
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            if (onItemLongClickListener != null) {
+                return onItemLongClickListener.onItemLongClick((AdapterView<Adapter>) viewGroup,
+                        v, position, getItemId(position));
+            }
+            return false;
+        }
+
     }
 
 }

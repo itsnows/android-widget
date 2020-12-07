@@ -10,17 +10,17 @@
         <attr name="civ_circle_background_color" format="color" />
     </declare-styleable>
 
-    <!--ShapImageView-->
-    <declare-styleable name="ShapImageView">
-        <attr name="shape_type" format="enum">
+    <!--ShapeImageView-->
+    <declare-styleable name="ShapeImageView">
+        <attr name="shape_image_type" format="enum">
             <enum name="oval" value="0" />
             <enum name="rect" value="1" />
         </attr>
-        <attr name="shape_radius" format="dimension" />
-        <attr name="shape_stroke_color" format="color" />
-        <attr name="shape_stroke_width" format="dimension" />
-        <attr name="shape_stroke_overlay" format="boolean" />
-        <attr name="shape_background_color" format="color" />
+        <attr name="shape_image_radius" format="dimension" />
+        <attr name="shape_image_stroke_color" format="color" />
+        <attr name="shape_image_stroke_width" format="dimension" />
+        <attr name="shape_image_stroke_overlay" format="boolean" />
+        <attr name="shape_image_background_color" format="color" />
     </declare-styleable>
 
     <!--EmptyStatusView-->

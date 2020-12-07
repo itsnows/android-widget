@@ -5,11 +5,10 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2017/10/17 12:34
- * <p>
  * NoScrollGridView
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2017/10/17 12:34
  */
 
 public class NoScrollGridView extends GridView {

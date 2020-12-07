@@ -1,19 +1,19 @@
 package com.itsnows.widget.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2016/6/22 19:09
- * <p>
  * RecyclerViewAdapter
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2016/6/22 19:09
  */
 public abstract class RecyclerViewAdapter<T> extends RecyclerView.Adapter<RecyclerViewHolder> {
     private Context mContext;

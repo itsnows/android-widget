@@ -4,10 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -22,12 +18,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+
+import com.google.android.material.appbar.AppBarLayout;
+
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2018/9/7 20:10
- * <p>
  * EmptyStatusView
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2018/9/7 20:10
  */
 public class EmptyStatusView extends FrameLayout {
     private static final float DEFAULT_ICON_SIZE = 96.0f;
@@ -151,7 +152,6 @@ public class EmptyStatusView extends FrameLayout {
             CoordinatorLayout clParent = (CoordinatorLayout) targetView;
             CoordinatorLayout.LayoutParams params = new CoordinatorLayout.LayoutParams(CoordinatorLayout.LayoutParams.MATCH_PARENT,
                     CoordinatorLayout.LayoutParams.MATCH_PARENT);
-
             AppBarLayout.ScrollingViewBehavior behavior = new AppBarLayout.ScrollingViewBehavior();
             // params.setBehavior(behavior);
             setLayoutParams(params);
@@ -178,7 +178,7 @@ public class EmptyStatusView extends FrameLayout {
      *
      * @return View
      */
-    public View getmTargetView() {
+    public View getTargetView() {
         return mTargetView;
     }
 

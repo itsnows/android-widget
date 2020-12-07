@@ -1,8 +1,6 @@
 package com.itsnows.widget.adapter;
 
 import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
@@ -15,15 +13,16 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import java.lang.reflect.InvocationTargetException;
+import androidx.annotation.IdRes;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.lang.reflect.Method;
 
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2016/6/22 21:09
- * <p>
  * RecyclerViewHolder
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2016/6/22 21:09
  */
 public class RecyclerViewHolder extends RecyclerView.ViewHolder {
     private Context mContext;
@@ -182,11 +181,7 @@ public class RecyclerViewHolder extends RecyclerView.ViewHolder {
             if (viewMethod != null) {
                 viewMethod.invoke(view, values);
             }
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return this;

@@ -13,19 +13,19 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 
+import androidx.annotation.ColorInt;
+import androidx.appcompat.widget.AppCompatImageView;
+
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2018/1/31 17:21
- * <p>
- * ShapImageView
+ * ShapeImageView
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2018/1/31 17:21
  */
 
-public class ShapImageView extends AppCompatImageView {
+public class ShapeImageView extends AppCompatImageView {
     private static final ShapeType DEFAULT_SHAPE_TYPE = ShapeType.OVAL;
     private static final float DEFAULT_RECT_RADIUS = 8;
     private static final int DEFAULT_STROKE_WIDTH = 0;
@@ -40,34 +40,34 @@ public class ShapImageView extends AppCompatImageView {
     private int mShapeBackgroundColor;
     private Paint mPaint;
 
-    public ShapImageView(Context context) {
+    public ShapeImageView(Context context) {
         this(context, null);
     }
 
-    public ShapImageView(Context context, AttributeSet attrs) {
+    public ShapeImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ShapImageView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ShapeImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         obtainStyledAttrs(context, attrs, defStyleAttr);
     }
 
     private void obtainStyledAttrs(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ShapImageView, defStyleAttr, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ShapeImageView, defStyleAttr, 0);
 
         mShapeType = DEFAULT_SHAPE_TYPE;
-        int type = a.getInteger(R.styleable.ShapImageView_shape_type, ShapeType.OVAL.type);
+        int type = a.getInteger(R.styleable.ShapeImageView_shape_image_type, ShapeType.OVAL.type);
         if (type == ShapeType.OVAL.type) {
             mShapeType = ShapeType.OVAL;
         } else if (type == ShapeType.RECT.type) {
             mShapeType = ShapeType.RECT;
         }
-        mShapeRadius = a.getDimension(R.styleable.ShapImageView_shape_radius, DEFAULT_RECT_RADIUS);
-        mShapeStrokeColor = a.getColor(R.styleable.ShapImageView_shape_stroke_color, DEFAULT_STROKE_COLOR);
-        mShapeStrokeWidth = a.getDimension(R.styleable.ShapImageView_shape_stroke_width, DEFAULT_STROKE_WIDTH);
-        mShapeStrokeOverlay = a.getBoolean(R.styleable.ShapImageView_shape_stroke_overlay, DEFAULT_STROKE_OVERLAY);
-        mShapeBackgroundColor = a.getColor(R.styleable.ShapImageView_shape_background_color, DEFAULT_SHAPE_BACKGROUND_COLOR);
+        mShapeRadius = a.getDimension(R.styleable.ShapeImageView_shape_image_radius, DEFAULT_RECT_RADIUS);
+        mShapeStrokeColor = a.getColor(R.styleable.ShapeImageView_shape_image_stroke_color, DEFAULT_STROKE_COLOR);
+        mShapeStrokeWidth = a.getDimension(R.styleable.ShapeImageView_shape_image_stroke_width, DEFAULT_STROKE_WIDTH);
+        mShapeStrokeOverlay = a.getBoolean(R.styleable.ShapeImageView_shape_image_stroke_overlay, DEFAULT_STROKE_OVERLAY);
+        mShapeBackgroundColor = a.getColor(R.styleable.ShapeImageView_shape_image_background_color, DEFAULT_SHAPE_BACKGROUND_COLOR);
         a.recycle();
 
         mShapeStrokeWidth = Math.max(mShapeStrokeWidth, 0);

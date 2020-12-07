@@ -3,11 +3,10 @@ package com.itsnows.widget.adapter;
 import java.util.Comparator;
 
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2018/10/10 10:46
- * <p>
  * MutableItem
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2018/10/10 10:46
  */
 public class MutableItem implements Comparator<MutableItem> {
     private int mNo;
@@ -43,6 +42,10 @@ public class MutableItem implements Comparator<MutableItem> {
         return mContent;
     }
 
+    public void setContent(Object content) {
+        this.mContent = content;
+    }
+
     public <T> T getContent(Class<T> type) {
         Class<?> contentClass = mContent.getClass();
         if (contentClass.equals(type) ||
@@ -50,10 +53,6 @@ public class MutableItem implements Comparator<MutableItem> {
             return (T) mContent;
         }
         return null;
-    }
-
-    public void setContent(Object content) {
-        this.mContent = content;
     }
 
     @Override

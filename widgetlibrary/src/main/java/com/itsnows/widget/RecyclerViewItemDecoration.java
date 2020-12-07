@@ -6,18 +6,18 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import androidx.annotation.ColorInt;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2016/6/22 21:09
- * <p>
  * RecyclerViewItemDecoration
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2016/6/22 21:09
  */
 public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
     public static final int HORIZONTAL = LinearLayoutManager.HORIZONTAL;

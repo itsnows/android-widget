@@ -1,28 +1,32 @@
 package com.itsnows.widget.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.Stack;
 
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2017/11/7 8:54
- * <p>
  * FragmentTabAdapter
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2017/11/7 8:54
  */
 public class FragmentTabAdapter extends FragmentPagerAdapter {
     private FragmentManager mFragmentManager;
     private Stack<TabItem> mTabItems;
 
-    public FragmentTabAdapter(FragmentManager mFragmentManager) {
-        super(mFragmentManager);
-        this.mFragmentManager = mFragmentManager;
+    public FragmentTabAdapter(@NonNull FragmentManager fm) {
+        this(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+    }
+
+    public FragmentTabAdapter(@NonNull FragmentManager fm, int behavior) {
+        super(fm, behavior);
+        this.mFragmentManager = fm;
         this.mTabItems = new Stack<>();
     }
 
@@ -70,20 +74,20 @@ public class FragmentTabAdapter extends FragmentPagerAdapter {
         super.notifyDataSetChanged();
     }
 
-    private static class TabItem {
+    static class TabItem {
         private final CharSequence title;
         private final Fragment fragment;
 
-        private TabItem(CharSequence title, Fragment fragment) {
+        TabItem(CharSequence title, Fragment fragment) {
             this.title = title;
             this.fragment = fragment;
         }
 
-        private CharSequence getTitle() {
+        CharSequence getTitle() {
             return title;
         }
 
-        private Fragment getFragment() {
+        Fragment getFragment() {
             return fragment;
         }
     }

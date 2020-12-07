@@ -1,15 +1,15 @@
 package com.itsnows.widget;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 
+import androidx.viewpager.widget.ViewPager;
+
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2018/2/23 11:55
- * <p>
  * NoSlideViewPager
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2018/2/23 11:55
  */
 
 public class NoSlideViewPager extends ViewPager {

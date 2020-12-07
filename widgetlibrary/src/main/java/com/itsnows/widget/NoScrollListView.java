@@ -5,11 +5,10 @@ import android.util.AttributeSet;
 import android.widget.ListView;
 
 /**
- * Author: itsnows
- * E-mail: xue.com.fei@outlook.com
- * CreatedTime: 2017/10/1 11:51
- * <p>
  * NoScrollListView
+ *
+ * @author itsnows, xue.com.fei@gmail.com
+ * @since 2017/10/1 11:51
  */
 
 public class NoScrollListView extends ListView {
